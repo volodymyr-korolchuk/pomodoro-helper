@@ -5,13 +5,14 @@ module.exports = {
     extend: {
       colors: {
         primary: "#B7B5FF",
-        danger: "#f87171",
+        danger: "rgb(252 165 165)",
         accent: "#22c55e",
         nature: "#4ade80",
         stars: " rgb(3 7 18)",
       },
       fontFamily: {
         koulen: "Koulen",
+        martian: "Martian Mono",
       },
     },
   },

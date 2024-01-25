@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import ThemeSelector from "./components/ThemeSelector";
+import ThemeSelector from "./components/ThemeSelector/ThemeSelector";
 import { useAppContext } from "./appContext";
-import Timer from "./components/Timer";
+import TimerWrapper from "./components/TimerWrapper";
 import { Theme } from "./appContext";
+import { FaStar } from "react-icons/fa";
+import Background from "./components/Background";
 
 const getTheme = (theme: Theme) => {
   switch (theme) {
@@ -43,15 +45,15 @@ function App() {
 
   return (
     <>
-      <nav className="absolute bg-transparent w-full flex items-center justify-end px-6 py-4">
+      <nav className="absolute bg-transparent w-full flex items-center justify-end px-6 py-4 z-20">
         <ThemeSelector />
       </nav>
       <main
         className={`${getTheme(
           theme
-        )} transition duration-250 h-[100vh] flex items-center justify-center overflow-hidden`}
+        )} w-[100vw] h-[100vh] flex items-center justify-center overflow-hidden`}
       >
-        <Timer />
+        <TimerWrapper />
       </main>
     </>
   );
