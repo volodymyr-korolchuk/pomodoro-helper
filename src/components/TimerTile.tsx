@@ -2,8 +2,8 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 type TimerTileProps = {
   value: number;
-  valueSetter: (value: number) => void;
   isRunning: boolean;
+  valueSetter: (value: number) => void;
 };
 
 const formatValue = (value: number) => {

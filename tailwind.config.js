@@ -8,6 +8,7 @@ module.exports = {
         danger: "#f87171",
         accent: "#22c55e",
         nature: "#4ade80",
+        stars: " rgb(3 7 18)",
       },
       fontFamily: {
         koulen: "Koulen",

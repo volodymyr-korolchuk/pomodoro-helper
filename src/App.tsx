@@ -38,7 +38,7 @@ function App() {
   const { theme } = useAppContext();
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
+    // window.addEventListener("keydown", handleKeyPress);
   }, []);
 
   return (
@@ -49,7 +49,7 @@ function App() {
       <main
         className={`${getTheme(
           theme
-        )} transition duration-250 h-[100vh] flex items-center justify-center`}
+        )} transition duration-250 h-[100vh] flex items-center justify-center overflow-hidden`}
       >
         <Timer />
       </main>
