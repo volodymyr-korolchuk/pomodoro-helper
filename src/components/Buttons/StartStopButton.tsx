@@ -12,9 +12,11 @@ const StartStopButton = ({
   return (
     <button
       onClick={startStop}
-      className={`rounded-lg w-52 ${isRunning ? "bg-primary" : "bg-accent"} ${
+      className={`rounded-lg sm:w-52 flex-1 ${
+        isRunning ? "bg-primary" : "bg-accent"
+      } ${
         secondsLeft < 1 && "opacity-60 pointer-events-none"
-      } text-[45px]`}
+      } sm:text-[45px] text-[40px] z-50`}
     >
       {isRunning ? "Pause" : "Start"}
     </button>

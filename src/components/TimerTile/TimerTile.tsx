@@ -6,6 +6,11 @@ type TimerTileProps = {
   valueSetter: (value: number) => void;
 };
 
+enum SetterAction {
+  Increment = 1,
+  Decrement = -1,
+}
+
 const formatValue = (value: number) => {
   return value > 9 ? `${value}` : `0${value}`;
 };
@@ -14,7 +19,7 @@ const TimerTile = ({ value, valueSetter, isRunning }: TimerTileProps) => {
   return (
     <div className="font-koulen flex flex-col mx-1">
       <button
-        onClick={() => valueSetter(1)}
+        onClick={() => valueSetter(SetterAction.Increment)}
         className={`bg-neutral-300 rounded-lg hover:bg-neutral-400 text-[45px] flex justify-center items-center ${
           isRunning ? "opacity-0 pointer-events-none" : ""
         }`}
@@ -25,15 +30,15 @@ const TimerTile = ({ value, valueSetter, isRunning }: TimerTileProps) => {
       <span
         className={`${
           isRunning
-            ? "bg-neutral-100 text-[140px]"
-            : "bg-neutral-200 text-[100px]"
-        } px-2 rounded-lg my-1 text-center w-[150px] select-none transition-all duration-250 ease-in-out`}
+            ? "bg-transparent sm:text-[8rem] text-[5rem]"
+            : "bg-neutral-200 sm:text-[5rem] text-[4rem]"
+        } sm:w-[160px] w-[100px] px-2 rounded-lg my-1 text-center select-none transition-all duration-300`}
       >
         {formatValue(value)}
       </span>
 
       <button
-        onClick={() => valueSetter(-1)}
+        onClick={() => valueSetter(SetterAction.Decrement)}
         className={`bg-neutral-300 transition duration-150 rounded-lg hover:bg-neutral-400 text-[45px] flex justify-center items-center ${
           isRunning ? "opacity-0 pointer-events-none" : ""
         }`}

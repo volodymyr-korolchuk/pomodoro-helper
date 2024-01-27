@@ -1,44 +1,33 @@
+import { useTimerContext } from "../../TimerContext";
 import useTrigonometry from "../../hooks/useTrigonometry";
 import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
 import TimerTile from "../TimerTile/TimerTile";
 
-type TomatoTimerProps = {
-  hours: number;
-  minutes: number;
-  seconds: number;
-  isRunning: boolean;
-  secondsLeft: number;
-  initialTime: number;
-  updateHours: (value: number) => void;
-  updateMinutes: (value: number) => void;
-  updateSeconds: (value: number) => void;
-  resetTimer: () => void;
-  startStop: () => void;
-};
-
-const TomatoTimer = ({
-  hours,
-  minutes,
-  seconds,
-  isRunning,
-  secondsLeft,
-  initialTime,
-  updateHours,
-  updateMinutes,
-  updateSeconds,
-  resetTimer,
-  startStop,
-}: TomatoTimerProps) => {
+const TomatoTimer = () => {
   const imagePath = "/images/dials/Tomato.png";
   const dimensions = {
-    width: 650,
-    height: 650,
+    width: window.innerWidth < 500 ? 340 : 570,
+    height: window.innerWidth < 500 ? 340 : 570,
   };
 
   const CIRCLE_RADIUS = dimensions.width / 2;
   const CIRCLE_CENTER_X = dimensions.width / 2;
   const CIRCLE_CENTER_Y = dimensions.height / 2;
+
+  const {
+    secondsLeft,
+    hours,
+    minutes,
+    seconds,
+    isRunning,
+    initialTime,
+    updateHours,
+    updateMinutes,
+    updateSeconds,
+    startStop,
+    resetTimer,
+  } = useTimerContext();
 
   const { startX, startY, endX, endY, largeArcFlag } =
     calculateCircleCoordinates(
@@ -53,13 +42,12 @@ const TomatoTimer = ({
   M ${CIRCLE_CENTER_X} ${CIRCLE_CENTER_Y}
   L ${startX} ${startY}
   A ${CIRCLE_RADIUS} ${CIRCLE_RADIUS} 0 ${largeArcFlag} 1 ${endX} ${endY}
-  Z
-`;
+  Z `;
 
   return (
     <div className="flex-1 flex items-center justify-center w-full text-[100px]">
       <div
-        className={`w-[620px] h-[620px] flex flex-col items-center justify-center z-10 rounded-full  ${
+        className={`sm:w-[570px] sm:h-[570px] w-[340px] h-[340px] flex flex-col items-center justify-center z-10 rounded-full  ${
           isRunning ? "" : "backdrop-blur-xl bg-neutral-200/10"
         } transition-all duration-300 ease-in-out`}
       >
@@ -85,7 +73,7 @@ const TomatoTimer = ({
           />
         </div>
       </div>
-      <div className="absolute bottom-3 p-4 gap-4 w-full flex items-center justify-center">
+      <div className="absolute sm:w-[570px] sm:bottom-3 bottom-1 z-50 p-4 gap-4 w-full flex items-center justify-center">
         <ResetButton
           secondsLeft={secondsLeft}
           isRunning={isRunning}
@@ -105,7 +93,7 @@ const TomatoTimer = ({
           height={dimensions.height}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <image href={imagePath} className={`w-[${dimensions.width}px]`} />
+          <image href={imagePath} className={`sm:w-[570px] w-[340px]`} />
           <circle
             cx={CIRCLE_CENTER_X}
             cy={CIRCLE_CENTER_Y}
