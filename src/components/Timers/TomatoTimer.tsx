@@ -4,16 +4,23 @@ import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
 import TimerTile from "../TimerTile/TimerTile";
 
+import { useEffect } from "react";
+// @ts-ignore
+import { dials } from "../../constants";
+
 const TomatoTimer = () => {
-  const imagePath = "/images/dials/Tomato.png";
   const dimensions = {
-    width: window.innerWidth < 500 ? 340 : 570,
-    height: window.innerWidth < 500 ? 340 : 570,
+    width: window.innerWidth < 600 ? 340 : 570,
+    height: window.innerWidth < 600 ? 340 : 570,
   };
 
-  const CIRCLE_RADIUS = dimensions.width / 2;
-  const CIRCLE_CENTER_X = dimensions.width / 2;
-  const CIRCLE_CENTER_Y = dimensions.height / 2;
+  useEffect(() => {
+    console.log(dials.Tomato);
+  }, []);
+
+  let CIRCLE_RADIUS = dimensions.width / 2;
+  let CIRCLE_CENTER_X = dimensions.width / 2;
+  let CIRCLE_CENTER_Y = dimensions.height / 2;
 
   const {
     secondsLeft,
@@ -93,7 +100,7 @@ const TomatoTimer = () => {
           height={dimensions.height}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <image href={imagePath} className={`sm:w-[570px] w-[340px]`} />
+          <image href={dials.TomatoDial} className={`sm:w-[570px] w-[340px]`} />
           <circle
             cx={CIRCLE_CENTER_X}
             cy={CIRCLE_CENTER_Y}

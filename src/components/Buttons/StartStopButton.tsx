@@ -16,7 +16,7 @@ const StartStopButton = ({
         isRunning ? "bg-primary" : "bg-accent"
       } ${
         secondsLeft < 1 && "opacity-60 pointer-events-none"
-      } sm:text-[45px] text-[40px] z-50`}
+      } sm:text-[40px] text-[35px] z-50`}
     >
       {isRunning ? "Pause" : "Start"}
     </button>

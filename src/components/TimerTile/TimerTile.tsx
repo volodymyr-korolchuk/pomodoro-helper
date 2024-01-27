@@ -3,6 +3,8 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 type TimerTileProps = {
   value: number;
   isRunning: boolean;
+  color?: string;
+  isGlowing?: boolean;
   valueSetter: (value: number) => void;
 };
 
@@ -15,7 +17,13 @@ const formatValue = (value: number) => {
   return value > 9 ? `${value}` : `0${value}`;
 };
 
-const TimerTile = ({ value, valueSetter, isRunning }: TimerTileProps) => {
+const TimerTile = ({
+  value,
+  isRunning,
+  color,
+  isGlowing,
+  valueSetter,
+}: TimerTileProps) => {
   return (
     <div className="font-koulen flex flex-col mx-1">
       <button
@@ -32,7 +40,9 @@ const TimerTile = ({ value, valueSetter, isRunning }: TimerTileProps) => {
           isRunning
             ? "bg-transparent sm:text-[8rem] text-[5rem]"
             : "bg-neutral-200 sm:text-[5rem] text-[4rem]"
-        } sm:w-[160px] w-[100px] px-2 rounded-lg my-1 text-center select-none transition-all duration-300`}
+        }  ${isRunning && color ? `text-${color}` : ""} ${
+          isRunning && isGlowing ? "drop-shadow-glow" : ""
+        }  sm:w-[160px] w-[100px] px-2 rounded-lg my-1 text-center select-none transition-all duration-300`}
       >
         {formatValue(value)}
       </span>

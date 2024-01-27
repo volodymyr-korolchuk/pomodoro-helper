@@ -12,14 +12,23 @@ type TimerContext = {
   hours: number;
   minutes: number;
   seconds: number;
+
+  intervalCount: number;
+  breakDuration: number;
+
   initialTime: number;
   isRunning: boolean;
+
   updateHours: (value: number) => void;
   updateMinutes: (value: number) => void;
   updateSeconds: (value: number) => void;
+
   updateTimer: () => void;
   startStop: () => void;
   resetTimer: () => void;
+
+  setIntervalCount: React.Dispatch<React.SetStateAction<number>>;
+  setBreakDuration: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type TimerContextProviderProps = {
@@ -41,6 +50,8 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
     getSecondsPart,
   } = useTimeFunctions();
 
+  const [intervalCount, setIntervalCount] = useState(2);
+  const [breakDuration, setBreakDuration] = useState(5);
   const [secondsLeft, setSecondsLeft] = useState(5);
   const [isRunning, setRunning] = useState(false);
   const [intervalId, setIntervalId] = useState<number>(0);
@@ -50,10 +61,6 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
   const seconds = getSecondsPart(secondsLeft);
 
   const [initialTime, setInitialTime] = useState<number>(secondsLeft);
-
-  useEffect(() => {
-    console.log("now yes");
-  }, [secondsLeft]);
 
   function updateHours(value: number) {
     if (hours < 1 && value === -1) {
@@ -125,13 +132,22 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
         minutes,
         seconds,
         initialTime,
+
+        intervalCount,
+        breakDuration,
+
         isRunning,
+
         updateHours,
         updateMinutes,
         updateSeconds,
+
         updateTimer,
         startStop,
         resetTimer,
+
+        setIntervalCount,
+        setBreakDuration,
       }}
     >
       {children}
