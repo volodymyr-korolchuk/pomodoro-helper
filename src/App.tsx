@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import ThemeSelector from "./components/ThemeSelector/ThemeSelector";
-import { useAppContext } from "./appContext";
 import TimerWrapper from "./components/TimerWrapper/TimerWrapper";
-import { Theme } from "./appContext";
+import { Theme, useAppContext } from "./context/appContext";
 
 const getTheme = (theme: Theme) => {
   switch (theme) {

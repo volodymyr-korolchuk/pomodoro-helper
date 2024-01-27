@@ -1,7 +1,8 @@
 import TimerTile from "../TimerTile/TimerTile";
 import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
-import { useTimerContext } from "../../TimerContext";
+import { useTimerContext } from "../../context/TimerContext";
+import SessionControl from "../SessionControl/SessionControl";
 
 const NatureTimer = () => {
   const {
@@ -43,6 +44,11 @@ const NatureTimer = () => {
             isRunning={isRunning}
           />
         </div>
+        {!isRunning && (
+          <section className="flex w-full px-1">
+            <SessionControl />
+          </section>
+        )}
       </div>
       <div className="absolute sm:w-[570px] sm:bottom-3 bottom-1 p-4 gap-4 w-full flex items-center justify-center">
         <ResetButton

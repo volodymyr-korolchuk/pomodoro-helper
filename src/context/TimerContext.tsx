@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import useTimeFunctions from "./hooks/useTimeFunctions";
+import useTimeFunctions from "../hooks/useTimeFunctions";
 
 type TimerContext = {
   secondsLeft: number;

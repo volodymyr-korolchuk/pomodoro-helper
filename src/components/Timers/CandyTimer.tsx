@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
 import TimerTile from "../TimerTile/TimerTile";
-import { useTimerContext } from "../../TimerContext";
+import { useTimerContext } from "../../context/TimerContext";
+import SessionControl from "../SessionControl/SessionControl";
 
 const CandyTimer = () => {
   const [quotes, setQuote] = useState<any[]>();
@@ -43,30 +44,40 @@ const CandyTimer = () => {
     <div className="sm:w-[680px] sm:h-[620px] z-50 border-[1px] pt-4 px-8 backdrop-blur-lg border-neutral-300 from-neutral-200/70 to-neutral-200/50 bg-gradient-to-br rounded-xl">
       <div className="w-full sm:h-full flex flex-col items-center justify-between">
         <h4 className="uppercase sm:text-[64px] text-[45px]">Time Left</h4>
-        <div
-          className={`bg-neutral-100 flex-1 flex items-center justify-center w-full h-full px-1 py-4 rounded-lg`}
-        >
-          <TimerTile
-            value={hours}
-            valueSetter={updateHours}
-            isRunning={isRunning}
-          />
-          <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
-            :
-          </span>
-          <TimerTile
-            value={minutes}
-            valueSetter={updateMinutes}
-            isRunning={isRunning}
-          />
-          <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
-            :
-          </span>
-          <TimerTile
-            value={seconds}
-            valueSetter={updateSeconds}
-            isRunning={isRunning}
-          />
+
+        <div className="flex flex-col w-full h-full bg-neutral-100 rounded-lg p-2">
+          <div
+            className={`bg-neutral-300 flex flex-col items-center justify-center p-4 w-full h-full rounded-lg`}
+          >
+            <div className="flex items-center justify-center mt-4">
+              <TimerTile
+                value={hours}
+                valueSetter={updateHours}
+                isRunning={isRunning}
+              />
+              <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
+                :
+              </span>
+              <TimerTile
+                value={minutes}
+                valueSetter={updateMinutes}
+                isRunning={isRunning}
+              />
+              <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
+                :
+              </span>
+              <TimerTile
+                value={seconds}
+                valueSetter={updateSeconds}
+                isRunning={isRunning}
+              />
+            </div>
+            {!isRunning && (
+              <section className="flex w-full  px-6">
+                <SessionControl />
+              </section>
+            )}
+          </div>
         </div>
 
         <div className="py-4 sm:gap-4 gap-2 w-full flex items-center justify-between">

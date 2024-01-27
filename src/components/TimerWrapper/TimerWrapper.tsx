@@ -1,6 +1,3 @@
-import { useAppContext } from "../../appContext";
-import { TimerContextProvider } from "../../TimerContext";
-import { Theme } from "../../appContext";
 import CandyTimer from "../Timers/CandyTimer";
 import TomatoTimer from "../Timers/TomatoTimer";
 import NatureTimer from "../Timers/NatureTimer";
@@ -13,6 +10,8 @@ import StarsTimer from "../Timers/StarsTimer";
 
 // @ts-ignore
 import { backgrounds } from "../../constants";
+import { Theme, useAppContext } from "../../context/appContext";
+import { TimerContextProvider } from "../../context/TimerContext";
 
 const TimerWrapper = () => {
   const { theme } = useAppContext();

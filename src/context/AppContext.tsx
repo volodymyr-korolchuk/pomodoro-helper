@@ -23,7 +23,7 @@ export function useAppContext() {
 }
 
 export function AppContextProvider({ children }: AppContextProviderProps) {
-  const [theme, setTheme] = useState(Theme.Candy);
+  const [theme, setTheme] = useState(Theme.Nature);
 
   function setAppTheme(nextTheme: Theme) {
     if (theme !== nextTheme) setTheme(nextTheme);

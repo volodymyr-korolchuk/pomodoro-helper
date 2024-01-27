@@ -1,4 +1,3 @@
-import { useTimerContext } from "../../TimerContext";
 import useTrigonometry from "../../hooks/useTrigonometry";
 import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
@@ -7,11 +6,13 @@ import TimerTile from "../TimerTile/TimerTile";
 import { useEffect } from "react";
 // @ts-ignore
 import { dials } from "../../constants";
+import { useTimerContext } from "../../context/TimerContext";
+import SessionControl from "../SessionControl/SessionControl";
 
 const TomatoTimer = () => {
   const dimensions = {
-    width: window.innerWidth < 600 ? 340 : 570,
-    height: window.innerWidth < 600 ? 340 : 570,
+    width: window.innerWidth < 600 ? 380 : 550,
+    height: window.innerWidth < 600 ? 380 : 550,
   };
 
   useEffect(() => {
@@ -54,11 +55,15 @@ const TomatoTimer = () => {
   return (
     <div className="flex-1 flex items-center justify-center w-full text-[100px]">
       <div
-        className={`sm:w-[570px] sm:h-[570px] w-[340px] h-[340px] flex flex-col items-center justify-center z-10 rounded-full  ${
+        className={`sm:w-[550px] sm:h-[550px] w-[380px] h-[380px] flex flex-col items-center justify-center z-10 rounded-full  ${
           isRunning ? "" : "backdrop-blur-xl bg-neutral-200/10"
         } transition-all duration-300 ease-in-out`}
       >
-        <div className={`flex items-center ${isRunning ? "opacity-0" : ""}`}>
+        <div
+          className={`flex w-full justify-between items-center ${
+            isRunning ? "opacity-0" : ""
+          }`}
+        >
           <TimerTile
             value={hours}
             valueSetter={updateHours}
@@ -79,8 +84,14 @@ const TomatoTimer = () => {
             isRunning={isRunning}
           />
         </div>
+        {!isRunning && (
+          <section className="flex w-full items-center justify-center px-1 ">
+            <SessionControl />
+          </section>
+        )}
       </div>
-      <div className="absolute sm:w-[570px] sm:bottom-3 bottom-1 z-50 p-4 gap-4 w-full flex items-center justify-center">
+
+      <div className="absolute sm:w-[550px] sm:bottom-3 bottom-1 z-50 p-4 gap-4 w-full flex items-center justify-center">
         <ResetButton
           secondsLeft={secondsLeft}
           isRunning={isRunning}
@@ -100,7 +111,7 @@ const TomatoTimer = () => {
           height={dimensions.height}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <image href={dials.TomatoDial} className={`sm:w-[570px] w-[340px]`} />
+          <image href={dials.TomatoDial} className={`sm:w-[550px] w-[380px]`} />
           <circle
             cx={CIRCLE_CENTER_X}
             cy={CIRCLE_CENTER_Y}
