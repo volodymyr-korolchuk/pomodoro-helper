@@ -1,7 +1,7 @@
 import TimerTile from "../TimerTile/TimerTile";
 import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
-import { useTimerContext } from "../../context/TimerContext";
+import { useTimerContext } from "../../context/timerContext";
 import { useEffect, useState } from "react";
 import SessionControl from "../SessionControl/SessionControl";
 

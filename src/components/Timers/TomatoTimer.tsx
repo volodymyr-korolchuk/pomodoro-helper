@@ -6,7 +6,7 @@ import TimerTile from "../TimerTile/TimerTile";
 import { useEffect } from "react";
 // @ts-ignore
 import { dials } from "../../constants";
-import { useTimerContext } from "../../context/TimerContext";
+import { useTimerContext } from "../../context/timerContext";
 import SessionControl from "../SessionControl/SessionControl";
 
 const TomatoTimer = () => {
