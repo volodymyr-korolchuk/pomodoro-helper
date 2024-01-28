@@ -4,10 +4,6 @@ import NatureTimer from "../Timers/NatureTimer";
 import TimedImage from "../TimedImage/TimedImage";
 import StarsTimer from "../Timers/StarsTimer";
 
-{
-  /*TODO: add fade out when mouse is not moving for 5 seconds*/
-}
-
 // @ts-ignore
 import { backgrounds } from "../../constants";
 import { Theme, useAppContext } from "../../context/appContext";
@@ -24,10 +20,10 @@ const TimerWrapper = () => {
     <>
       <TimerContextProvider>
         {theme === Theme.Nature && (
-          <TimedImage imagePathArray={Nature} interval={2000} />
+          <TimedImage imagePathArray={Nature} interval={5000} />
         )}
         {theme === Theme.Stars && (
-          <TimedImage imagePathArray={Stars} interval={2000} />
+          <TimedImage imagePathArray={Stars} interval={5000} />
         )}
         <div className="font-koulen">
           {theme === Theme.Candy && <CandyTimer />}

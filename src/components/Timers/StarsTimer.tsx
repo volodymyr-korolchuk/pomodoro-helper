@@ -6,9 +6,6 @@ import { useEffect, useState } from "react";
 import SessionControl from "../SessionControl/SessionControl";
 
 const StarsTimer = () => {
-  const [quotes, setQuotes] = useState<any[]>([]);
-  const [currentQuote, setCurrentQuote] = useState<string>("");
-
   const {
     secondsLeft,
     hours,
@@ -22,49 +19,6 @@ const StarsTimer = () => {
     startStop,
     resetTimer,
   } = useTimerContext();
-
-  const setNextQuote = () => {
-    if (!quotes.length || quotes.length < 1) return;
-
-    setCurrentQuote((prev) => {
-      const index = quotes.indexOf(prev);
-
-      if (index + 1 > quotes?.length - 1 || index === -1) {
-        return quotes[0];
-      } else {
-        return quotes[index + 1];
-      }
-    });
-  };
-
-  useEffect(() => {
-    const fetchQuotes = async () => {
-      const url = "https://type.fit/api/quotes";
-
-      try {
-        const response = await fetch(url);
-        const result = await response
-          .json()
-          .then((entries) => entries.map((entry: any) => entry.text));
-
-        setQuotes(result);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setNextQuote();
-      }
-    };
-
-    fetchQuotes();
-
-    const id = setInterval(() => {
-      setNextQuote();
-    }, 12000);
-
-    return () => {
-      clearInterval(id);
-    };
-  }, []);
 
   return (
     <div className="flex-1 flex items-center justify-center w-full text-[100px]">
@@ -104,13 +58,7 @@ const StarsTimer = () => {
                 isGlowing={true}
               />
             </div>
-            {isRunning ? (
-              <p
-                className={`transition-all duration-500 ease-in text-neutral-100 text-[20px] drop-shadow-glow`}
-              >
-                {currentQuote}
-              </p>
-            ) : (
+            {!isRunning && (
               <section className="flex w-full items-center justify-center px-1">
                 <SessionControl />
               </section>

@@ -37,7 +37,7 @@ function App() {
   const { theme } = useAppContext();
 
   useEffect(() => {
-    // window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
   }, []);
 
   return (
