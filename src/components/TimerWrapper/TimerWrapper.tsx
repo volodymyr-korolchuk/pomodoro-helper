@@ -6,8 +6,8 @@ import StarsTimer from "../Timers/StarsTimer";
 
 // @ts-ignore
 import { backgrounds } from "../../constants";
-import { Theme, useAppContext } from "../../context/appContext";
-import { TimerContextProvider } from "../../context/timerContext";
+import { Theme, useAppContext } from "../../context/AppContext";
+import { TimerContextProvider } from "../../context/TimerContext";
 
 const TimerWrapper = () => {
   const { theme } = useAppContext();

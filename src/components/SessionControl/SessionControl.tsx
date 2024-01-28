@@ -1,4 +1,4 @@
-import { useTimerContext } from "../../context/timerContext";
+import { useTimerContext } from "../../context/TimerContext";
 import Counter from "../Counter/Counter";
 
 const SessionControl = () => {

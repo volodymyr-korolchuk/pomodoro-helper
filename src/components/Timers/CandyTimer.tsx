@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
 import ResetButton from "../Buttons/ResetButton";
 import StartStopButton from "../Buttons/StartStopButton";
 import TimerTile from "../TimerTile/TimerTile";
-import { useTimerContext } from "../../context/timerContext";
+import { useTimerContext } from "../../context/TimerContext";
 import SessionControl from "../SessionControl/SessionControl";
 
 const CandyTimer = () => {
-  const [quotes, setQuote] = useState<any[]>();
-  const [isLoading, setIsLoading] = useState(true);
-
   const {
     secondsLeft,
     hours,
@@ -22,24 +18,6 @@ const CandyTimer = () => {
     startStop,
     resetTimer,
   } = useTimerContext();
-
-  useEffect(() => {
-    const fetchQuote = async () => {
-      const url = "https://type.fit/api/quotes";
-
-      try {
-        const response = await fetch(url);
-        const result = await response.json();
-        setQuote(result);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchQuote();
-  }, []);
 
   return (
     <div className="sm:w-[680px] sm:h-[620px] z-50 border-[1px] pt-4 px-8 backdrop-blur-lg border-neutral-300 from-neutral-200/70 to-neutral-200/50 bg-gradient-to-br rounded-xl">

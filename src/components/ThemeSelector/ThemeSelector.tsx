@@ -1,4 +1,4 @@
-import { Theme, useAppContext } from "../../context/appContext";
+import { Theme, useAppContext } from "../../context/AppContext";
 
 // @ts-ignore
 import { themeButtons } from "../../constants";
