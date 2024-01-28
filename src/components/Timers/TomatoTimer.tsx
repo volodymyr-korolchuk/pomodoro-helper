@@ -30,6 +30,7 @@ const TomatoTimer = () => {
     seconds,
     isRunning,
     initialTime,
+    isBreakActive,
     updateHours,
     updateMinutes,
     updateSeconds,
@@ -59,35 +60,43 @@ const TomatoTimer = () => {
           isRunning ? "" : "backdrop-blur-xl bg-neutral-200/10"
         } transition-all duration-300 ease-in-out`}
       >
-        <div
-          className={`flex w-full justify-between items-center ${
-            isRunning ? "opacity-0" : ""
-          }`}
-        >
-          <TimerTile
-            value={hours}
-            valueSetter={updateHours}
-            isRunning={isRunning}
-          />
-          <span className="text-center pb-5">:</span>
+        {isBreakActive ? (
+          <div className="uppercase text-neutral-800 bg-neutral-200/50 py-4 px-16 rounded-lg text-[80px]">
+            break
+          </div>
+        ) : (
+          <>
+            <div
+              className={`flex w-full justify-between items-center ${
+                isRunning ? "opacity-0" : ""
+              }`}
+            >
+              <TimerTile
+                value={hours}
+                valueSetter={updateHours}
+                isRunning={isRunning}
+              />
+              <span className="text-center pb-5">:</span>
 
-          <TimerTile
-            value={minutes}
-            valueSetter={updateMinutes}
-            isRunning={isRunning}
-          />
-          <span className="text-center pb-5">:</span>
+              <TimerTile
+                value={minutes}
+                valueSetter={updateMinutes}
+                isRunning={isRunning}
+              />
+              <span className="text-center pb-5">:</span>
 
-          <TimerTile
-            value={seconds}
-            valueSetter={updateSeconds}
-            isRunning={isRunning}
-          />
-        </div>
-        {!isRunning && (
-          <section className="flex w-full items-center justify-center px-1 ">
-            <SessionControl />
-          </section>
+              <TimerTile
+                value={seconds}
+                valueSetter={updateSeconds}
+                isRunning={isRunning}
+              />
+            </div>
+            {!isRunning && (
+              <section className="flex w-full items-center justify-center px-1 ">
+                <SessionControl />
+              </section>
+            )}
+          </>
         )}
       </div>
 

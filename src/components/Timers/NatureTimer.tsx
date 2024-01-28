@@ -25,7 +25,9 @@ const NatureTimer = () => {
         className={`flex flex-col items-center justify-center z-10 transition-all duration-300 ease-in-out`}
       >
         {isBreakActive ? (
-          <div>break</div>
+          <div className="uppercase text-neutral-800 bg-neutral-200/50 py-4 px-16 rounded-lg text-[80px]">
+            break
+          </div>
         ) : (
           <>
             <div className={`flex items-center`}>

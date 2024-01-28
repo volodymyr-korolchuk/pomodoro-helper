@@ -15,6 +15,7 @@ const CandyTimer = () => {
     minutes,
     seconds,
     isRunning,
+    isBreakActive,
     updateHours,
     updateMinutes,
     updateSeconds,
@@ -49,33 +50,41 @@ const CandyTimer = () => {
           <div
             className={`bg-neutral-300 flex flex-col items-center justify-center p-4 w-full h-full rounded-lg`}
           >
-            <div className="flex items-center justify-center mt-4">
-              <TimerTile
-                value={hours}
-                valueSetter={updateHours}
-                isRunning={isRunning}
-              />
-              <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
-                :
-              </span>
-              <TimerTile
-                value={minutes}
-                valueSetter={updateMinutes}
-                isRunning={isRunning}
-              />
-              <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
-                :
-              </span>
-              <TimerTile
-                value={seconds}
-                valueSetter={updateSeconds}
-                isRunning={isRunning}
-              />
-            </div>
-            {!isRunning && (
-              <section className="flex w-full  px-6">
-                <SessionControl />
-              </section>
+            {isBreakActive ? (
+              <div className="uppercase text-neutral-800 bg-neutral-200/50 py-4 px-16 rounded-lg text-[80px]">
+                break
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center justify-center mt-4">
+                  <TimerTile
+                    value={hours}
+                    valueSetter={updateHours}
+                    isRunning={isRunning}
+                  />
+                  <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
+                    :
+                  </span>
+                  <TimerTile
+                    value={minutes}
+                    valueSetter={updateMinutes}
+                    isRunning={isRunning}
+                  />
+                  <span className="text-center sm:pb-5 pb-2 sm:text-[100px] text-[70px] select-none">
+                    :
+                  </span>
+                  <TimerTile
+                    value={seconds}
+                    valueSetter={updateSeconds}
+                    isRunning={isRunning}
+                  />
+                </div>
+                {!isRunning && (
+                  <section className="flex w-full  px-6">
+                    <SessionControl />
+                  </section>
+                )}
+              </>
             )}
           </div>
         </div>
