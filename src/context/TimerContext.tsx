@@ -15,6 +15,7 @@ type TimerContext = {
 
   intervalCount: number;
   breakDuration: number;
+  isBreakActive: boolean;
 
   initialTime: number;
   isRunning: boolean;
@@ -52,6 +53,8 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
 
   const [intervalCount, setIntervalCount] = useState(2);
   const [breakDuration, setBreakDuration] = useState(5);
+
+  const [isBreakActive, setBreakActive] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(5);
   const [isRunning, setRunning] = useState(false);
   const [intervalId, setIntervalId] = useState<number>(0);
@@ -98,7 +101,9 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
   function updateTimer() {
     setSecondsLeft((prev) => {
       if (prev <= 1) {
-        resetTimer();
+        clearInterval(intervalId);
+        setSecondsLeft(0);
+        setRunning(false);
         return 0;
       }
       return prev - 1;
@@ -124,6 +129,35 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
       : clearInterval(intervalId);
   }, [isRunning]);
 
+  useEffect(() => {
+    // timer is running or was reset
+    if (secondsLeft !== 0 || isRunning || initialTime === 0) {
+      return;
+    }
+
+    // no study intervals left
+    if (intervalCount <= 1) {
+      return;
+    }
+
+    setBreakActive(true);
+
+    setIntervalCount((prev) => {
+      // if there is more than one interval left - set interval count as n - 1, else set interval count as 1;
+      return prev > 0 ? prev - 1 : 1;
+    });
+
+    // calculate duration in ms
+    const timeout = breakDuration * SECONDS_IN_MINUTE * 1000;
+
+    // initiate the next study interval after the break
+    setTimeout(() => {
+      setSecondsLeft(initialTime);
+      setBreakActive(false);
+      setRunning(true);
+    }, timeout);
+  }, [isRunning]);
+
   return (
     <TimerContext.Provider
       value={{
@@ -135,6 +169,7 @@ export function TimerContextProvider({ children }: TimerContextProviderProps) {
 
         intervalCount,
         breakDuration,
+        isBreakActive,
 
         isRunning,
 

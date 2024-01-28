@@ -11,6 +11,7 @@ const NatureTimer = () => {
     minutes,
     seconds,
     isRunning,
+    isBreakActive,
     updateHours,
     updateMinutes,
     updateSeconds,
@@ -23,31 +24,37 @@ const NatureTimer = () => {
       <div
         className={`flex flex-col items-center justify-center z-10 transition-all duration-300 ease-in-out`}
       >
-        <div className={`flex items-center`}>
-          <TimerTile
-            value={hours}
-            valueSetter={updateHours}
-            isRunning={isRunning}
-          />
-          <span className="text-center pb-5">:</span>
+        {isBreakActive ? (
+          <div>break</div>
+        ) : (
+          <>
+            <div className={`flex items-center`}>
+              <TimerTile
+                value={hours}
+                valueSetter={updateHours}
+                isRunning={isRunning}
+              />
+              <span className="text-center pb-5">:</span>
 
-          <TimerTile
-            value={minutes}
-            valueSetter={updateMinutes}
-            isRunning={isRunning}
-          />
-          <span className="text-center pb-5">:</span>
+              <TimerTile
+                value={minutes}
+                valueSetter={updateMinutes}
+                isRunning={isRunning}
+              />
+              <span className="text-center pb-5">:</span>
 
-          <TimerTile
-            value={seconds}
-            valueSetter={updateSeconds}
-            isRunning={isRunning}
-          />
-        </div>
-        {!isRunning && (
-          <section className="flex w-full px-1">
-            <SessionControl />
-          </section>
+              <TimerTile
+                value={seconds}
+                valueSetter={updateSeconds}
+                isRunning={isRunning}
+              />
+            </div>
+            {!isRunning && (
+              <section className="flex w-full px-1">
+                <SessionControl />
+              </section>
+            )}
+          </>
         )}
       </div>
       <div className="absolute sm:w-[570px] sm:bottom-3 bottom-1 p-4 gap-4 w-full flex items-center justify-center">

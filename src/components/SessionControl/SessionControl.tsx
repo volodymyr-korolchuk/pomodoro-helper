@@ -6,7 +6,10 @@ const SessionControl = () => {
     useTimerContext();
 
   const setIntervalCountCallback = (value: number) => {
-    if (intervalCount <= 1 || intervalCount >= 10) {
+    if (
+      (intervalCount <= 1 && value === -1) ||
+      (intervalCount >= 10 && value === 1)
+    ) {
       return;
     }
 
@@ -14,7 +17,10 @@ const SessionControl = () => {
   };
 
   const setBreakDurationCallback = (value: number) => {
-    if (breakDuration <= 1 || breakDuration >= 59) {
+    if (
+      (breakDuration <= 1 && value === -1) ||
+      (breakDuration >= 59 && value === 1)
+    ) {
       return;
     }
 
