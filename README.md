@@ -1,3 +1,24 @@
+## Pomodoro Helper App
+Your companion for efficient study sessions using the Pomodoro Technique. This app allows users to set their study and break durations, choose from four colorful themes: Candy, Tomato, Nature, and Stars and make studying at least a bit more fun.
+
+## Features
+
+- **Pomodoro Technique:** Utilize the Pomodoro Technique for effective time management during study sessions.
+
+- **Customizable Settings:**
+  - Set the length of each study interval.
+  - Define the duration of breaks between study sessions.
+  - Specify the quantity of study sessions.
+
+- **Colorful Themes:**
+  - Choose from four visually appealing themes to enhance your study environment:
+    - Candy 🍭
+    - Tomato 🍅
+    - Nature 🌿
+    - Stars 🌌
+
+## Screenshots
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
