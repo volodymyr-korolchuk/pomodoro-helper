@@ -19,6 +19,12 @@ Your companion for efficient study sessions using the Pomodoro Technique. This a
 
 ## Screenshots
 
+![image](https://github.com/volodymyr-korolchuk/pomodoro-helper/assets/122407662/ff29e75a-c244-4e7a-8768-1b1aecc986f5)
+
+![image](https://github.com/volodymyr-korolchuk/pomodoro-helper/assets/122407662/fda3fffb-7a17-4720-bf98-af73e9997a94)
+
+![image](https://github.com/volodymyr-korolchuk/pomodoro-helper/assets/122407662/9de19325-79a3-49cc-a807-c213458e80fb)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
