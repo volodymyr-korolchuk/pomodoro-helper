@@ -1,5 +1,5 @@
 # Pomodoro Helper App
-Your companion for efficient study sessions using the Pomodoro Technique. This app allows users to set their study and break durations, choose from four colorful themes: Candy, Tomato, Nature, and Stars and make studying at least a bit more fun.
+Your companion for efficient study sessions using **the Pomodoro Technique**. This app allows users to set their study session and break durations, choose from four colorful themes: Candy, Tomato, Nature, Stars and make studying a bit more fun.
 
 ## Features
 
